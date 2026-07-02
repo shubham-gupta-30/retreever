@@ -16,7 +16,7 @@ ReTreever is a retrieval-optimized hierarchical retriever. It learns an inspecta
 
 ## Release status
 
-The public project page is live. Code is marked as **coming soon** until release approval is complete.
+The public project page is static HTML. Code is marked as **coming soon** until release approval is complete.
 
 ## Citation
 
