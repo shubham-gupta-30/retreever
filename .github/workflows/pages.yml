@@ -1,49 +1,11 @@
-name: Deploy ReTreever project page
+name: Manual Pages workflow note
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
-
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  note:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Prepare static site artifact
-        run: |
-          set -eux
-          mkdir -p public/assets
-          cp index.html public/index.html
-          cp .nojekyll public/.nojekyll
-          cp README.md public/README.md
-          cp CITATION.bib public/CITATION.bib
-          cp assets/favicon.svg public/assets/favicon.svg
-          cp assets/social-card.svg public/assets/social-card.svg
-          find public -maxdepth 3 -type f -print
-
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload static site artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: public
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Explain deployment source
+        run: echo "This project page is intended to publish from main /docs via GitHub Pages branch publishing."
